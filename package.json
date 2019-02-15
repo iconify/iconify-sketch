@@ -1,7 +1,7 @@
 {
   "name": "iconify",
   "description": "Iconify integration. Import MDI, FontAwesome, Jam, EmojiOne and many other icons to Sketch document.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "engines": {
     "sketch": ">=3.0"
   },
