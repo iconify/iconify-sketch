@@ -1,0 +1,10 @@
+node_modules
+.npm
+npm-debug.log
+.DS_Store
+.idea
+src
+assets
+resources
+package-lock.json
+*.zip

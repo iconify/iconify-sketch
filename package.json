@@ -1,0 +1,34 @@
+{
+  "name": "iconify",
+  "description": "Iconify integration. Import MDI, FontAwesome, Jam, EmojiOne and many other icons to Sketch document.",
+  "version": "0.0.1",
+  "engines": {
+    "sketch": ">=3.0"
+  },
+  "skpm": {
+    "name": "iconify",
+    "manifest": "src/manifest.json",
+    "main": "iconify.sketchplugin",
+    "assets": [
+      "assets/**/*"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/iconify-design/iconify-sketch.git"
+  },
+  "scripts": {
+    "build": "skpm-build",
+    "watch": "skpm-build --watch",
+    "start": "skpm-build --watch --run",
+    "postinstall": "npm run build && skpm-link",
+    "rel": "NODE_ENV=production npm run build && skpm-link"
+  },
+  "devDependencies": {
+    "@skpm/builder": "^0.5.11"
+  },
+  "author": "Vjacheslav Trushkin <cyberalien@gmail.com>",
+  "dependencies": {
+    "sketch-module-web-view": "2.1.2"
+  }
+}
