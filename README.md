@@ -35,6 +35,18 @@ Icon might sometimes be imported outside of page. Drag it to correct location.
 
 Plug-in will try to scale icon down to 16-24 pixels high. Some icons have weird huge dimensions, they might be imported with original SVG size instead of being scaled down. You need to scale down such icons yourself by selecting icon group and changing height.
 
+## Screenshots
+
+Big choice of "home" icons:
+![Iconify for React - search results](https://iconify.design/assets/images/sketch-sample-00.png)
+
+Browsing Emoji One icons:
+![Iconify for React - browsing icons set](https://iconify.design/assets/images/sketch-sample-01.png)
+
+Collections list:
+![Iconify for React - browse collections](https://iconify.design/assets/images/sketch-sample-02.png)
+
+
 ## License
 
 MIT. See license.txt
