@@ -21,8 +21,8 @@
     "build": "skpm-build",
     "watch": "skpm-build --watch",
     "start": "skpm-build --watch --run",
-    "postinstall": "npm run build && skpm-link",
-    "rel": "NODE_ENV=production npm run build && skpm-link"
+    "postinstall": "npm run build",
+    "rel": "NODE_ENV=production npm run build"
   },
   "devDependencies": {
     "@skpm/builder": "^0.5.11"
