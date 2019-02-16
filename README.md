@@ -35,6 +35,12 @@ Icon might sometimes be imported outside of page. Drag it to correct location.
 
 Plug-in will try to scale icon down to 16-24 pixels high. Some icons have weird huge dimensions, they might be imported with original SVG size instead of being scaled down. You need to scale down such icons yourself by selecting icon group and changing height.
 
+## TODO
+
+* [ ] Support dark theme
+* [ ] Place SVG above/below currently selected layer
+* [ ] Use selected layer's color instead of black for monotone icons
+
 ## Screenshots
 
 Big choice of "home" icons:
