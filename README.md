@@ -18,7 +18,7 @@ See https://iconify.design/
 
 ## Installation
 
-Download repository, open "iconify.sketchplugin" in Finder. Finder should launch Sketch that should install this plug-in.
+Click ["Releases"](https://github.com/iconify-design/iconify-sketch/releases) link, download latest file, unpack it, open "iconify.sketchplugin" in Finder. Finder should launch Sketch that should install this plug-in.
 
 If plug-in installation fails, copy iconify.sketchplugin to ~/Library/Application Support/com.bohemiancoding.sketch3/Plugins/
 

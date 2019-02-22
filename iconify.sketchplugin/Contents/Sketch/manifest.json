@@ -1,0 +1,28 @@
+{
+  "name": "Iconify",
+  "description": "Vector icons from popular fonts and SVG sets: Font Awesome, Material Design Icons, EmojiOne and many more...",
+  "homepage": "https://iconify.design/",
+  "compatibleVersion": 3,
+  "bundleVersion": 1,
+  "icon": "icon.png",
+  "commands": [
+    {
+      "name": "Iconify ‹🙂›",
+      "identifier": "iconify.add-icon",
+      "script": "add-icon.js",
+      "shortcut": "ctrl shift i"
+    }
+  ],
+  "menu": {
+    "isRoot": true,
+    "items": [
+      "iconify.add-icon"
+    ]
+  },
+  "version": "1.0.1",
+  "identifier": "iconify",
+  "disableCocoaScriptPreprocessor": true,
+  "appcast": "https://raw.githubusercontent.com/iconify-design/iconify-sketch/master/.appcast.xml",
+  "author": "Vjacheslav Trushkin",
+  "authorEmail": "cyberalien@gmail.com"
+}
