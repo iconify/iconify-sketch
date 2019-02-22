@@ -29,6 +29,6 @@
   },
   "author": "Vjacheslav Trushkin <cyberalien@gmail.com>",
   "dependencies": {
-    "sketch-module-web-view": "2.1.2"
+    "sketch-module-web-view": "^2.1.5"
   }
 }
