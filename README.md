@@ -6,7 +6,7 @@ Import Material Design Icons, FontAwesome, Jam Icons, EmojiOne, Twitter Emoji an
 
 Iconify is new unified SVG framework. It is designed to replace outdated glyph fonts with modern JavaScript SVG framework
 and offer massive choice of icons. Unlike fonts, Iconify only loads icons used on pages, so you can use icons from FontAwesome,
-Material Design Icons, Firefox Emoji and more on web page without loading massive amounts of fonts.
+Material Design Icons, Firefox Emoji and more on web page without loading many fonts. It is fast and very easy to use.
 
 See https://iconify.design/ for details.
 
