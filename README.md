@@ -1,20 +1,26 @@
 # Iconify plug-in for Sketch
 
-Import MDI, FontAwesome, Jam, EmojiOne and many other icons to Sketch document. Over 30,000 icons to choose from.
+Import Material Design Icons, FontAwesome, Jam Icons, EmojiOne, Twitter Emoji and many other icons (more than 50 icon sets containing over 30,000 icons) to Sketch document as vector shapes.
 
-See available icons on Iconify website: https://iconify.design/icon-sets/
+## What is Iconify?
 
-## Why Iconify?
+Iconify is new unified SVG framework. It is designed to replace outdated glyph fonts with modern JavaScript SVG framework
+and offer massive choice of icons. Unlike fonts, Iconify only loads icons used on pages, so you can use icons from FontAwesome,
+Material Design Icons, Firefox Emoji and more on web page without loading massive amounts of fonts.
 
-This plugin inserts SVG in Sketch document exactly same way as icons are shown on pages. Icons include extra layer that
+See https://iconify.design/ for details.
+
+In addition to SVG framework, Iconify is available as React component (components for other frameworks will be available later). See https://github.com/iconify-design/iconify-react
+
+## What can Sketch plug-in do?
+
+Sketch plug-in offers easy way to import icons to project.
+
+You can browse and search icon sets directly from Sketch. No need to copy/paste icons - plug-in will import icons.
+
+Also this plugin inserts SVG in Sketch document exactly same way as icons are shown on pages. Icons include extra layer that
 matches viewBox, so you can resize and place icon correctly in your design and then in HTML document with same dimensions
 it will look the same.
-
-For designing you can use this plugin.
-
-For coding you can use Iconify SVG framework or Iconify React component (components for other frameworks will be available later).
-
-See https://iconify.design/
 
 ## Installation
 
