@@ -8,15 +8,15 @@ Iconify is new unified SVG framework. It is designed to replace outdated glyph f
 and offer massive choice of icons. Unlike fonts, Iconify only loads icons used on pages, so you can use icons from FontAwesome,
 Material Design Icons, Firefox Emoji and more on web page without loading many fonts. It is fast and very easy to use.
 
-See https://iconify.design/ for details.
+See [https://iconify.design/](https://iconify.design/) for details.
 
-In addition to SVG framework, Iconify is available as React component (components for other frameworks will be available later). See https://github.com/iconify-design/iconify-react
+In addition to SVG framework, Iconify is available as React component (components for other frameworks will be available later). See [https://github.com/iconify-design/iconify-react](https://github.com/iconify-design/iconify-react)
 
 ## What can Sketch plug-in do?
 
 Sketch plug-in offers easy way to import icons to project.
 
-You can browse and search icon sets directly from Sketch. No need to copy/paste icons - plug-in will import icons.
+You can browse and search icon sets directly from Sketch. No need to copy/paste icons - plug-in will import icons you select.
 
 Also this plugin inserts SVG in Sketch document exactly same way as icons are shown on pages. Icons include extra layer that
 matches viewBox, so you can resize and place icon correctly in your design and then in HTML document with same dimensions
@@ -44,6 +44,7 @@ Plug-in will try to scale icon down to 16-24 pixels high. Some icons have weird 
 ## TODO
 
 * [ ] Support dark theme
+* [ ] Use last selected layer's fill or stroke color instead of black for importing monotone icons
 * [ ] Place SVG above/below currently selected layer
 * [ ] Use selected layer's color instead of black for monotone icons
 
