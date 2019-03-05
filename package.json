@@ -18,11 +18,11 @@
     "url": "git://github.com/iconify-design/iconify-sketch.git"
   },
   "scripts": {
-    "build": "skpm-build",
+    "build": "rm -rf *.sketchplugin && skpm-build",
     "watch": "skpm-build --watch",
     "start": "skpm-build --watch --run",
     "postinstall": "npm run build",
-    "rel": "NODE_ENV=production npm run build"
+    "rel": "rm -rf *.sketchplugin && NODE_ENV=production npm run build"
   },
   "devDependencies": {
     "@skpm/builder": "^0.5.15"
