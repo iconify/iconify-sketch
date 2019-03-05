@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!--
+/**
+ * This file is part of the @iconify/sketch package.
+ *
+ * (c) Vjacheslav Trushkin <cyberalien@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Iconify</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
+    <link rel="stylesheet" href="https://code.iconify.design/search/1/1.0.0/normalize.css" />
+    <link rel="stylesheet" href="https://code.iconify.design/search/1/1.0.0/style.css" />
+    <style>
+        html, body {
+            background: #f2f2f2;
+        }
+        body {
+            padding: 16px;
+        }
+        #container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .pending {
+            font-family: 'PT Sans', 'Open Sans', 'Droid Sans', sans-serif;
+            font-size: 16px;
+            line-height: 24px;
+            margin: 64px 32px;
+            text-align: center;
+        }
+        .pending span {
+            color: #626262;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="pending">
+            Loading icon finder...<br />
+            <br />
+            <br />
+            <span>
+            If this message does not disappear in several seconds, there was a problem loading scripts.
+            Make sure you have working internet and restart Sketch.
+            </span>
+        </div>
+    </div>
+
+    <script src="https://code.iconify.design/1/1.0.0-rc7/iconify.min.js"></script>
+    <script src="https://code.iconify.design/search/1/1.0.0/samples.js"></script>
+    <script src="https://code.iconify.design/search/1/1.0.0/search.min.js"></script>
+    <script>
+        setTimeout(function() {
+            IconifySearch.create(document.getElementById('container'), {
+                // prefix: 'mdi',
+                // hidePrefix: true,
+                listView: false,
+                append: false,
+                show: true,
+                useForm: true,
+                showCollections: true,
+                footer: {
+                    submit: 'Add',
+                    submit2: 'Add and Close',
+                    cancel: 'Close',
+                    transform: true,
+                    size: true,
+                    hideEmpty: true
+                },
+                callback: function(event, icon) {
+                    var name, params, data, code, result;
+
+                    switch (event) {
+                        case 'cancel':
+                            window.postMessage('add-icon', {
+                                action: 'close'
+                            });
+                            break;
+
+                        case 'submit':
+                        case 'submit2':
+                            name = icon.prefix + (icon.prefix.indexOf('-') === -1 ? '-' : ':') + icon.name;
+                            if (!Iconify.iconExists(name)) {
+                                return;
+                            }
+
+                            data = Iconify.getIcon(name);
+                            if (data === null) {
+                                return;
+                            }
+
+                            result = {
+                                action: event,
+                                title: name,
+                                icon: icon, // selected options: {name, prefix, prefixTitle, rotate, hFlip, vFlip}
+                                data: data // icon data: {body, width, height, verticalAlign, ...}
+                            };
+
+                            // Check if icon is colorless
+                            result.colorless = data.body.indexOf('currentColor') !== -1;
+
+                            // Generate SVG code
+                            params = {
+                                'data-height': 'auto',
+                                'color': '#000',
+                                'data-rotate': icon.rotate,
+                                'data-flip': (icon.hFlip ? (icon.vFlip ? 'horizontal,vertical' : 'horizontal') : (icon.vFlip ? 'vertical' : ''))
+                            };
+                            code = Iconify.getSVG(name, params);
+                            if (code === null) {
+                                return;
+                            }
+
+                            // Add matching rect
+                            // Add rect matching viewBox
+                            try {
+                                (function () {
+                                    var index, viewBox;
+
+                                    index = code.indexOf('viewBox="');
+                                    if (index === -1) {
+                                        return;
+                                    }
+
+                                    viewBox = code.slice(index + 9).split('"').shift().split(' ');
+                                    if (!viewBox || viewBox.length !== 4) {
+                                        return;
+                                    }
+
+                                    index = code.indexOf('</svg>');
+                                    if (index === -1) {
+                                        return;
+                                    }
+
+                                    code = code.slice(0, index) + '<rect x="' + viewBox[0] + '" y="' + viewBox[1] + '" width="' + viewBox[2] + '" height="' + viewBox[3] + '" fill="rgba(0, 0, 0, 0)" />' + code.slice(index);
+                                    result.viewBox = {
+                                        left: viewBox[0],
+                                        top: viewBox[1],
+                                        width: viewBox[2],
+                                        height: viewBox[3]
+                                    };
+                                })();
+                            } catch (err) {
+                            }
+                            result.code = code;
+
+                            // Send message
+                            // console.log('Adding icon:', result);
+                            window.postMessage('add-icon', result);
+                    }
+                }
+            });
+        }, 0);
+
+    </script>
+</body>
+</html>

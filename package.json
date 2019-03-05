@@ -25,10 +25,10 @@
     "rel": "NODE_ENV=production npm run build"
   },
   "devDependencies": {
-    "@skpm/builder": "^0.5.11"
+    "@skpm/builder": "^0.5.15"
   },
   "author": "Vjacheslav Trushkin <cyberalien@gmail.com>",
   "dependencies": {
-    "sketch-module-web-view": "^2.1.5"
+    "sketch-module-web-view": "^2.1.7"
   }
 }
