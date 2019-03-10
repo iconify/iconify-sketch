@@ -17,8 +17,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Iconify</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
-    <link rel="stylesheet" href="https://code.iconify.design/search/1/1.0.0/normalize.css" />
-    <link rel="stylesheet" href="https://code.iconify.design/search/1/1.0.0/style.css" />
+    <link rel="stylesheet" href="https://code.iconify.design/search/1/1.0.2/normalize.css" />
+    <link rel="stylesheet" href="https://code.iconify.design/search/1/1.0.2/style.css" />
     <style>
         html, body {
             background: #f2f2f2;
@@ -56,11 +56,17 @@
     </div>
 
     <script src="https://code.iconify.design/1/1.0.0-rc7/iconify.min.js"></script>
-    <script src="https://code.iconify.design/search/1/1.0.0/samples.js"></script>
-    <script src="https://code.iconify.design/search/1/1.0.0/search.min.js"></script>
+    <script src="https://code.iconify.design/samples.js"></script>
+    <script src="https://code.iconify.design/search/1/1.0.2/search.min.js"></script>
     <script>
-        setTimeout(function() {
-            IconifySearch.create(document.getElementById('container'), {
+        window.startIconify = function(options, sketchData) {
+            var $container = document.getElementById('container');
+
+            if (sketchData.dark) {
+                $container.classList.add('is--dark');
+            }
+
+            IconifySearch.create($container, {
                 // prefix: 'mdi',
                 // hidePrefix: true,
                 listView: false,
@@ -74,10 +80,12 @@
                     cancel: 'Close',
                     transform: true,
                     size: true,
-                    hideEmpty: true
+                    hideEmpty: true,
+                    color: typeof options.color === 'string' && options.color.length ? options.color : true,
+                    defaultColor: '#000'
                 },
                 callback: function(event, icon) {
-                    var name, params, data, code, result;
+                    var name, params, data, code, result, width, height, counter;
 
                     switch (event) {
                         case 'cancel':
@@ -101,23 +109,53 @@
                             result = {
                                 action: event,
                                 title: name,
-                                icon: icon, // selected options: {name, prefix, prefixTitle, rotate, hFlip, vFlip}
-                                data: data // icon data: {body, width, height, verticalAlign, ...}
+                                icon: icon, // selected options: {name, prefix, prefixTitle, rotate, hFlip, vFlip, color}
+                                data: data, // icon data: {body, width, height, verticalAlign, ...}
+                                options: options
                             };
 
                             // Check if icon is colorless
                             result.colorless = data.body.indexOf('currentColor') !== -1;
 
+                            // Scale icon
+                            width = data.width;
+                            height = data.height;
+                            counter = 0;
+                            while (true) {
+                                counter ++;
+                                if (counter > 8) {
+                                    break;
+                                }
+                                if (height > 47 && width % 2 === 0 && height % 2 === 0) {
+                                    width = width / 2;
+                                    height = height / 2;
+                                    continue;
+                                }
+                                if (height > 74 && width % 5 === 0 && height % 5 === 0) {
+                                    width = width / 5;
+                                    height = height / 5;
+                                    break;
+                                }
+                                break;
+                            }
+
                             // Generate SVG code
+                            // console.log('Data:', data);
+                            console.log('Original size:', data.width, data.height, 'Scaled:', width, height);
                             params = {
-                                'data-height': 'auto',
-                                'color': '#000',
+                                'data-width': width,
+                                'data-height': height,
                                 'data-rotate': icon.rotate,
                                 'data-flip': (icon.hFlip ? (icon.vFlip ? 'horizontal,vertical' : 'horizontal') : (icon.vFlip ? 'vertical' : ''))
                             };
                             code = Iconify.getSVG(name, params);
                             if (code === null) {
                                 return;
+                            }
+
+                            // Replace color
+                            if (result.colorless) {
+                                code = code.replace(/currentColor/g, typeof icon.color === 'string' && icon.color.length ? icon.color : '#000');
                             }
 
                             // Add matching rect
@@ -154,10 +192,16 @@
                             result.code = code;
 
                             // Send message
-                            // console.log('Adding icon:', result);
+                            console.log('Adding icon:', result);
                             window.postMessage('add-icon', result);
                     }
                 }
+            });
+        };
+
+        setTimeout(function() {
+            window.postMessage('add-icon', {
+                action: 'prepare'
             });
         }, 0);
 
