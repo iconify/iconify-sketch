@@ -10,7 +10,7 @@ Material Design Icons, Firefox Emoji and more on web page without loading many f
 
 See [https://iconify.design/](https://iconify.design/) for details.
 
-In addition to SVG framework, Iconify is available as React component (components for other frameworks will be available later). See [https://github.com/iconify-design/iconify-react](https://github.com/iconify-design/iconify-react)
+In addition to SVG framework, Iconify is available as React component (components for other frameworks will be available later). See [https://github.com/iconify/iconify-react](https://github.com/iconify/iconify-react)
 
 ## What can Sketch plug-in do?
 
@@ -24,7 +24,7 @@ it will look the same.
 
 ## Installation
 
-Click ["Releases"](https://github.com/iconify-design/iconify-sketch/releases) link, download latest file, unpack it, open "iconify.sketchplugin" in Finder. Finder should launch Sketch that should install this plug-in.
+Click ["Releases"](https://github.com/iconify/iconify-sketch/releases) link, download latest file, unpack it, open "iconify.sketchplugin" in Finder. Finder should launch Sketch that should install this plug-in.
 
 If plug-in installation fails, copy iconify.sketchplugin to ~/Library/Application Support/com.bohemiancoding.sketch3/Plugins/
 
