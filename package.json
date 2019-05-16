@@ -27,7 +27,7 @@
     "rel": "rm -rf *.sketchplugin && NODE_ENV=production npm run build"
   },
   "devDependencies": {
-    "@skpm/builder": "^0.5.15"
+    "@skpm/builder": "^0.5.16"
   },
   "author": "Vjacheslav Trushkin <cyberalien@gmail.com>",
   "dependencies": {
