@@ -13,6 +13,8 @@
       "assets/**/*"
     ]
   },
+  "homepage": "https://iconify.design/",
+  "bugs": "https://github.com/iconify/iconify-sketch/issues",
   "repository": {
     "type": "git",
     "url": "git://github.com/iconify/iconify-sketch.git"
