@@ -62,7 +62,7 @@ var that=this;function __skpm_run(e,t){that.context=t;var n=function(e){var t={}
 /*!******************************!*\
   !*** ./resources/index.html ***!
   \******************************/
-/*! no static exports found */function(e,n){e.exports="file://"+t.plugin.urlForResourceNamed("_webpack_resources/a51d04c4bafcda275d40c707ccbbd916.html").path()},"./src/add-icon.js":
+/*! no static exports found */function(e,n){e.exports="file://"+t.plugin.urlForResourceNamed("_webpack_resources/9b83a5ac7c008f18faf0255a6c9503f1.html").path()},"./src/add-icon.js":
 /*!*************************!*\
   !*** ./src/add-icon.js ***!
   \*************************/
