@@ -19,7 +19,7 @@
       "iconify.add-icon"
     ]
   },
-  "version": "1.1.5",
+  "version": "1.1.6",
   "identifier": "iconify",
   "disableCocoaScriptPreprocessor": true,
   "appcast": "https://raw.githubusercontent.com/iconify/iconify-sketch/master/.appcast.xml",
