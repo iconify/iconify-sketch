@@ -1,36 +1,36 @@
 {
-  "name": "Iconify",
-  "description": "Import MDI, FontAwesome, Jam, EmojiOne and many other icons to Sketch document.",
-  "version": "1.1.6",
-  "engines": {
-    "sketch": ">=3.0"
-  },
-  "skpm": {
-    "name": "iconify",
-    "manifest": "src/manifest.json",
-    "main": "iconify.sketchplugin",
-    "assets": [
-      "assets/**/*"
-    ]
-  },
-  "homepage": "https://iconify.design/",
-  "bugs": "https://github.com/iconify/iconify-sketch/issues",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/iconify/iconify-sketch.git"
-  },
-  "scripts": {
-    "build": "rm -rf *.sketchplugin && skpm-build",
-    "watch": "skpm-build --watch",
-    "start": "skpm-build --watch --run",
-    "postinstall": "npm run build",
-    "rel": "rm -rf *.sketchplugin && NODE_ENV=production npm run build"
-  },
-  "devDependencies": {
-    "@skpm/builder": "^0.5.16"
-  },
-  "author": "Vjacheslav Trushkin <cyberalien@gmail.com>",
-  "dependencies": {
-    "sketch-module-web-view": "^3.4.1"
-  }
+	"name": "@iconify/sketch",
+	"description": "Import MDI, FontAwesome, Jam, EmojiOne and many other icons to Sketch document.",
+	"version": "1.1.6",
+	"engines": {
+		"sketch": ">=3.0"
+	},
+	"skpm": {
+		"name": "iconify",
+		"manifest": "src/manifest.json",
+		"main": "iconify.sketchplugin",
+		"assets": [
+			"assets/**/*"
+		]
+	},
+	"homepage": "https://iconify.design/",
+	"bugs": "https://github.com/iconify/iconify-sketch/issues",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/iconify/iconify-sketch.git"
+	},
+	"scripts": {
+		"build": "rm -rf *.sketchplugin && skpm-build",
+		"watch": "skpm-build --watch",
+		"start": "skpm-build --watch --run",
+		"postinstall": "npm run build",
+		"rel": "rm -rf *.sketchplugin && NODE_ENV=production npm run build"
+	},
+	"devDependencies": {
+		"@skpm/builder": "^0.5.16"
+	},
+	"author": "Vjacheslav Trushkin <cyberalien@gmail.com>",
+	"dependencies": {
+		"sketch-module-web-view": "^3.4.1"
+	}
 }
