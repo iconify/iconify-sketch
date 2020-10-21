@@ -9,7 +9,7 @@
     {
       "name": "Iconify ‹🙂›",
       "identifier": "iconify.add-icon",
-      "script": "add-icon.js",
+      "script": "__add-icon.js",
       "shortcut": "ctrl shift i"
     }
   ],
