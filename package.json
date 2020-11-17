@@ -1,7 +1,7 @@
 {
 	"name": "@iconify/sketch",
 	"description": "Import MDI, FontAwesome, Jam, EmojiOne and many other icons to Sketch document.",
-	"version": "1.1.7",
+	"version": "1.1.8",
 	"author": "Vjacheslav Trushkin <cyberalien@gmail.com>",
 	"engines": {
 		"sketch": ">=3.0"
