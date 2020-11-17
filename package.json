@@ -28,8 +28,7 @@
 		"rel": "rm -rf *.sketchplugin && NODE_ENV=production npm run build"
 	},
 	"devDependencies": {
-		"@skpm/builder": "^0.7.7",
-		"sketch-module-web-view": "^3.4.3"
-	},
-	"dependencies": {}
+		"@skpm/builder": "^0.7.11",
+		"sketch-module-web-view": "^3.5.0"
+	}
 }
