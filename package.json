@@ -1,20 +1,23 @@
 {
 	"name": "@iconify/sketch",
 	"description": "Iconify for Sketch",
+	"version": "2.0.0-dev",
 	"author": "Vjacheslav Trushkin (Iconify OÜ)",
 	"license": "(Apache-2.0 OR GPL-2.0)",
 	"scripts": {
 		"build": "node build/all",
 		"build:script": "rollup -c rollup.config.js",
 		"watch:script": "rollup -c rollup.config.js --watch",
-		"build:style": "node build/style"
+		"build:style": "node build/style",
+		"build:plugin": "rm -rf *.sketchplugin && skpm-build",
+		"rel": "rm -rf *.sketchplugin && NODE_ENV=production npm run build"
 	},
 	"engines": {
 		"sketch": ">=3.0"
 	},
 	"skpm": {
 		"name": "iconify",
-		"manifest": "src/manifest.json",
+		"manifest": "manifest.json",
 		"main": "iconify.sketchplugin",
 		"assets": [
 			"assets/**/*"
@@ -32,6 +35,7 @@
 		"@rollup/plugin-typescript": "^6.1.0",
 		"@skpm/builder": "^0.7.11",
 		"@tsconfig/svelte": "^1.0.10",
+		"line-md": "^0.0.4",
 		"node-sass": "^5.0.0",
 		"nodemon": "^2.0.6",
 		"rollup": "^2.33.1",

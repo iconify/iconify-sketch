@@ -9,6 +9,8 @@ module.exports = {
 		script: 'src/icon-finder/index.ts',
 		// Stylesheet
 		style: 'src/style-iconify/style.scss',
+		// HTML
+		html: 'src/ui.html',
 	},
 
 	// Output names
@@ -19,5 +21,7 @@ module.exports = {
 		script: 'icon-finder.js',
 		// Filename of stylesheet
 		style: 'style.css',
+		// HTML
+		html: 'ui.html',
 	},
 };

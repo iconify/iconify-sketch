@@ -9,7 +9,7 @@ export const canAddProviders = false;
 /**
  * Automatically focus search
  */
-export const canFocusSearch = false;
+export const canFocusSearch = true;
 
 /**
  * Show collection information block (author, license, etc...) when browsing collection
@@ -69,11 +69,12 @@ export const iconSampleSize = {
 export const showButtons = true;
 
 export const footerButtons: Record<string, FooterButton> = {
-	submit: {
+	import: {
 		type: 'primary',
-		display: 'icons', // Show only when icon(s) have been selected
+		display: 'one-icon', // Show only when icon(s) have been selected
+		text: 'Import Icon',
 	},
-	cancel: {
+	close: {
 		type: 'secondary',
 	},
 };
