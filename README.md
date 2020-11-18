@@ -1,26 +1,27 @@
 # Iconify plug-in for Sketch
 
-Import Material Design Icons, FontAwesome, Jam Icons, EmojiOne, Twitter Emoji and many other icons (more than 80 icon sets containing over 70,000 icons) to Sketch document as vector shapes.
+Want to add icons to your designs?
+
+Iconify for Sketch got you covered. One plug-in offers over 70,000 icons from 80+ icon sets, including Material Design Icons, FontAwesome, Jam Icons, Open Emoji and many others.
+
+You can:
+
+-   Browse icon sets.
+-   Search icon sets.
+-   Import any icon as vector shape to Sketch document.
+
+It is completely free! All icon sets offered with Iconify are available with open source licenses.
 
 ## What is Iconify?
 
-Iconify is new unified SVG framework. It is designed to replace outdated glyph fonts with modern JavaScript SVG framework
-and offer massive choice of icons. Unlike fonts, Iconify only loads icons used on pages, so you can use icons from FontAwesome,
-Material Design Icons, Firefox Emoji and more on web page without loading many fonts. It is fast and very easy to use.
+Iconify is an open source platform for working with icons.
 
-See [https://iconify.design/](https://iconify.design/) for details.
+Originally it was designed to replace outdated icon fonts with modern SVG framework. Now it is a much bigger project. Iconify offers:
 
-In addition to SVG framework, Iconify is available as React, Vue and Svelte component. See [Iconify components documentation](https://docs.iconify.design/implementations/components/).
-
-## What can Sketch plug-in do?
-
-Sketch plug-in offers easy way to import icons to project.
-
-You can browse and search icon sets directly from Sketch. No need to copy/paste icons - plug-in will import icons you select.
-
-Also this plugin inserts SVG in Sketch document exactly same way as icons are shown on pages. Icons include extra layer that
-matches viewBox, so you can resize and place icon correctly in your design and then in HTML document with same dimensions
-it will look the same.
+-   Plugins for design tools, such as this plug-in for Sketch.
+-   [SVG framework](https://iconify.design/) to easily embed icons in HTML.
+-   [React, Vue and Svelte components](https://docs.iconify.design/implementations/components/) for developers that prefer to use components instead of SVG framework.
+-   [Icon picker](http://github.com/iconify/icon-finder), allowing developers to add icon search functionality to applications, such as website builders.
 
 ## Installation
 
@@ -50,6 +51,16 @@ Collections list:
 
 Importing multiple icons:
 ![Iconify for Sketch: browsing icons set](https://docs.iconify.design/assets/images/plugins/sketch_select_multiple.png)
+
+## Building
+
+If you want to build plug-in from source code, follow these steps:
+
+-   Download this repository.
+-   Run `npm install` to install all dependencies.
+-   Run `npm run build` to build plug-in.
+
+Build process will generate `iconify.sketchplugin` that you can install in Sketch.
 
 ## License
 
