@@ -17,6 +17,7 @@ interface UIImportMessage {
 	action: 'import';
 	svg: string;
 	name: string;
+	customisations: PartialIconCustomisations;
 }
 interface UIStateMessage {
 	action: 'state';
@@ -106,6 +107,7 @@ function sendMessage(message: UIMessage) {
 				action: 'import',
 				svg,
 				name,
+				customisations,
 			});
 		}
 
