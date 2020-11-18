@@ -13,8 +13,8 @@ export default () => {
 
 	// Browser window
 	const options = {
-		width: 800,
-		height: 800,
+		width: 760,
+		height: 600,
 		title: 'Iconify',
 		show: false,
 	};

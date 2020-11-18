@@ -115,6 +115,9 @@ export class Wrapper {
 		const core = (this._core = new IconFinderCore(coreParams));
 		const registry = (this._registry = core.registry as WrappedRegistry);
 
+		// Change number of icons per page
+		registry.config.ui.itemsPerPage = 12 * 4;
+
 		// Callback
 		registry.setCustom('callback', this._internalCallback.bind(this));
 
