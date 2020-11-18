@@ -360,6 +360,13 @@ export default () => {
 						JSON.stringify(message)
 					);
 					return;
+
+				case 'link':
+					// Click external llink
+					NSWorkspace.sharedWorkspace().openURL(
+						NSURL.URLWithString(message.href)
+					);
+					return;
 			}
 		}
 	});

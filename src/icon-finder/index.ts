@@ -28,12 +28,17 @@ interface UIResizeMessage {
 	width: number;
 	height: number;
 }
+interface UIExternalLinkMessage {
+	action: 'link';
+	href: string;
+}
 type UIMessage =
 	| UIReadyMessage
 	| UICloseMessage
 	| UIImportMessage
 	| UIStateMessage
-	| UIResizeMessage;
+	| UIResizeMessage
+	| UIExternalLinkMessage;
 
 interface SketchWindow {
 	postMessage: (key: string, payload: UIMessage) => Promise<unknown>;
@@ -160,6 +165,16 @@ function sendMessage(message: UIMessage) {
 								storeState();
 								return;
 						}
+						break;
+
+					case 'link':
+						// External link was clicked
+						event.event.preventDefault();
+						sendMessage({
+							action: 'link',
+							href: event.href,
+						});
+						break;
 				}
 			},
 		});
