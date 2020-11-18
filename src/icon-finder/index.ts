@@ -23,11 +23,17 @@ interface UIStateMessage {
 	action: 'state';
 	state: Partial<InitialIconFinderState>;
 }
+interface UIResizeMessage {
+	action: 'resize';
+	width: number;
+	height: number;
+}
 type UIMessage =
 	| UIReadyMessage
 	| UICloseMessage
 	| UIImportMessage
-	| UIStateMessage;
+	| UIStateMessage
+	| UIResizeMessage;
 
 interface SketchWindow {
 	postMessage: (key: string, payload: UIMessage) => Promise<unknown>;
@@ -140,6 +146,7 @@ function sendMessage(message: UIMessage) {
 								sendMessage({
 									action: 'close',
 								});
+								wrapper.destroy();
 								return;
 
 							case 'import':
@@ -155,6 +162,29 @@ function sendMessage(message: UIMessage) {
 						}
 				}
 			},
+		});
+
+		/**
+		 * Check window size
+		 */
+		let resizing = false;
+		window.addEventListener('resize', () => {
+			if (resizing) {
+				// Throttle
+				return;
+			}
+			resizing = true;
+			setTimeout(() => {
+				if (wrapper.getStatus() === 'destroyed') {
+					return;
+				}
+				resizing = true;
+				sendMessage({
+					action: 'resize',
+					width: window.innerWidth,
+					height: window.innerHeight,
+				});
+			}, 1000);
 		});
 	}
 };

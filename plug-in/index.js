@@ -5,6 +5,7 @@ import BrowserWindow from 'sketch-module-web-view';
 
 export default () => {
 	// Keys for storage
+	const windowSizeKey = 'iconify-window';
 	const configKey = 'iconify2';
 	const iconDataKey = 'iconify';
 
@@ -12,14 +13,24 @@ export default () => {
 	const viewBoxName = 'ViewBox';
 
 	// Browser window
-	const options = {
-		width: 760,
-		height: 600,
+	let windowOptions;
+	try {
+		windowOptions = JSON.parse(Settings.settingForKey(windowSizeKey));
+	} catch (err) {}
+	const browserOptions = {
+		width:
+			windowOptions && typeof windowOptions.width === 'number'
+				? windowOptions.width
+				: 760,
+		height:
+			windowOptions && typeof windowOptions.height === 'number'
+				? windowOptions.height
+				: 600,
 		title: 'Iconify',
 		show: false,
 	};
 
-	const browserWindow = new BrowserWindow(options);
+	const browserWindow = new BrowserWindow(browserOptions);
 
 	// Offset for importing layers
 	let offsetX = 0;
@@ -339,6 +350,14 @@ export default () => {
 					Settings.setSettingForKey(
 						configKey,
 						JSON.stringify(message.state)
+					);
+					return;
+
+				case 'resize':
+					// Window was resized
+					Settings.setSettingForKey(
+						windowSizeKey,
+						JSON.stringify(message)
 					);
 					return;
 			}
