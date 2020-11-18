@@ -71,8 +71,8 @@ export const showButtons = true;
 export const footerButtons: Record<string, FooterButton> = {
 	import: {
 		type: 'primary',
-		display: 'one-icon', // Show only when icon(s) have been selected
-		text: 'Import Icon',
+		display: 'icons', // Show only when icon(s) have been selected
+		text: (button) => 'Import Icon' + (button.icons.length > 1 ? 's' : ''),
 	},
 	close: {
 		type: 'secondary',

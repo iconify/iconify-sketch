@@ -119,7 +119,6 @@ export default () => {
 		 * Remove empty nested group
 		 */
 		function unGroupChildren(layer) {
-			console.log('Child layers:', layer.layers);
 			if (
 				layer.layers &&
 				layer.layers.length === 1 &&
@@ -195,12 +194,10 @@ export default () => {
 
 	// Show window, load plug-in
 	browserWindow.once('ready-to-show', () => {
-		console.log('ready-to-show');
 		browserWindow.show();
 	});
 
 	browserWindow.webContents.on('did-finish-load', () => {
-		console.log('did-finish-load');
 		if (!browserWindow.isVisible()) {
 			browserWindow.show();
 		}
