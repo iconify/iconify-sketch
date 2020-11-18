@@ -38,14 +38,18 @@ Browse or search icons, select any icon, click "Import" button. Plug-in will imp
 
 ## Screenshots
 
-Big choice of "home" icons:
-![Iconify for React - search results](https://iconify.design/assets/images/sketch-sample-00.png)
+Importing icon:
+![Iconify for Sketch: footer](https://docs.iconify.design/assets/images/plugins/sketch_footer.png)
 
-Browsing Emoji One icons:
-![Iconify for React - browsing icons set](https://iconify.design/assets/images/sketch-sample-01.png)
+Big choice of "home" icons:
+![Iconify for Sketch: search results](https://docs.iconify.design/assets/images/plugins/sketch_home_grid.png)
 
 Collections list:
-![Iconify for React - browse collections](https://iconify.design/assets/images/sketch-sample-02.png)
+![Iconify for Sketch: browse collections](https://docs.iconify.design/assets/images/plugins/sketch_index.png)
+![Iconify for Sketch: browse collections](https://docs.iconify.design/assets/images/plugins/sketch_emoji.png)
+
+Importing multiple icons:
+![Iconify for Sketch: browsing icons set](https://docs.iconify.design/assets/images/plugins/sketch_select_multiple.png)
 
 ## License
 
