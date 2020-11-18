@@ -4,6 +4,13 @@ import Settings from 'sketch/settings';
 import BrowserWindow from 'sketch-module-web-view';
 
 export default () => {
+	// Key to store config
+	const configKey = 'iconify2';
+
+	// Name used for fake rectangle
+	const viewBoxName = 'ViewBox';
+
+	// Browser window
 	const options = {
 		width: 800,
 		height: 800,
@@ -12,9 +19,6 @@ export default () => {
 	};
 
 	const browserWindow = new BrowserWindow(options);
-
-	// Name used for fake rectangle
-	const viewBoxName = 'ViewBox';
 
 	/**
 	 * Get possible parent layers
@@ -188,6 +192,14 @@ export default () => {
 						console.error(err);
 					}
 					return;
+
+				case 'state':
+					// Store state
+					Settings.setSettingForKey(
+						configKey,
+						JSON.stringify(message.state)
+					);
+					return;
 			}
 		}
 	});
@@ -201,8 +213,20 @@ export default () => {
 		if (!browserWindow.isVisible()) {
 			browserWindow.show();
 		}
+
+		let config;
+		try {
+			config = JSON.parse(Settings.settingForKey(configKey));
+		} catch (err) {}
+
 		browserWindow.webContents
-			.executeJavaScript('startIconifyPlugin();')
+			.executeJavaScript(
+				'startIconifyPlugin(' +
+					(typeof config === 'object'
+						? JSON.stringify(config)
+						: '{}') +
+					');'
+			)
 			.then(() => {})
 			.catch((err) => {
 				console.error(err);

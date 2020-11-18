@@ -2,6 +2,7 @@ import Iconify from '@iconify/iconify';
 import { Icon, iconToString } from '@iconify/search-core';
 import type { PartialIconCustomisations } from './customisations/types';
 import { Wrapper } from './wrapper';
+import type { InitialIconFinderState } from './wrapper/state';
 
 /**
  * Interfaces
@@ -17,11 +18,19 @@ interface UIImportMessage {
 	svg: string;
 	name: string;
 }
-type UIMessage = UIReadyMessage | UICloseMessage | UIImportMessage;
+interface UIStateMessage {
+	action: 'state';
+	state: Partial<InitialIconFinderState>;
+}
+type UIMessage =
+	| UIReadyMessage
+	| UICloseMessage
+	| UIImportMessage
+	| UIStateMessage;
 
 interface SketchWindow {
 	postMessage: (key: string, payload: UIMessage) => Promise<unknown>;
-	startIconifyPlugin: () => void;
+	startIconifyPlugin: (state: Partial<InitialIconFinderState>) => void;
 }
 
 /**
@@ -40,7 +49,9 @@ function sendMessage(message: UIMessage) {
 /**
  * Show UI
  */
-((window as unknown) as SketchWindow).startIconifyPlugin = () => {
+((window as unknown) as SketchWindow).startIconifyPlugin = (
+	state: Partial<InitialIconFinderState>
+) => {
 	const container = document.getElementById('container');
 	if (container) {
 		container.removeAttribute('id');
@@ -55,13 +66,16 @@ function sendMessage(message: UIMessage) {
 		): void {
 			const name = typeof icon === 'string' ? icon : iconToString(icon);
 
+			// Copy customisations to avoid modifying object
+			const props = Object.assign({}, customisations);
+
 			// Set height
-			if (!customisations.height && !customisations.width) {
-				customisations.height = 'auto';
+			if (!props.height && !props.width) {
+				props.height = 'auto';
 			}
 
 			// Generate SVG
-			let svg = Iconify.renderHTML(name, customisations);
+			let svg = Iconify.renderHTML(name, props);
 			if (!svg) {
 				return;
 			}
@@ -69,7 +83,7 @@ function sendMessage(message: UIMessage) {
 			// Set color
 			svg = svg.replace(
 				/currentColor/g,
-				customisations.color === void 0 ? '#000' : customisations.color
+				props.color === void 0 ? '#000' : props.color
 			);
 
 			// Add empty rectangle
@@ -96,10 +110,22 @@ function sendMessage(message: UIMessage) {
 		}
 
 		/**
+		 * Store current state
+		 */
+		function storeState() {
+			const state = wrapper.getState();
+			sendMessage({
+				action: 'state',
+				state,
+			});
+		}
+
+		/**
 		 * Create Icon Finder
 		 */
 		const wrapper = new Wrapper({
 			container,
+			state,
 			callback: (event) => {
 				switch (event.type) {
 					case 'button':
@@ -107,7 +133,8 @@ function sendMessage(message: UIMessage) {
 						switch (event.button) {
 							case 'close':
 							case 'cancel':
-								// Close window
+								// Store config and close window
+								storeState();
 								sendMessage({
 									action: 'close',
 								});
@@ -121,6 +148,7 @@ function sendMessage(message: UIMessage) {
 										event.state.customisations
 									);
 								});
+								storeState();
 								return;
 						}
 				}
