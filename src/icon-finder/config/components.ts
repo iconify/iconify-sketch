@@ -26,12 +26,12 @@ export const canShortenIconName = true;
 /**
  * Show title for footer blocks?
  */
-export const showFooterBlockTitles = false;
+export const showFooterBlockTitles = true;
 
 /**
  * Toggle footer blocks?
  */
-export const canToggleFooterBlocks = false;
+export const canToggleFooterBlocks = true;
 
 /**
  * Show info block in footer?
@@ -102,4 +102,4 @@ export const footerButtons: Record<string, FooterButton> = {
  * Sample code
  */
 // To disable code block, also change link for CodeBlock to Empty.svelte in ./components.ts (it will remove component from bundle)
-export const showCode = false;
+export const showCode = true;
