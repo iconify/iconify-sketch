@@ -5,6 +5,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import svelte from 'rollup-plugin-svelte';
 import sveltePreprocess from 'svelte-preprocess';
+import babel from '@rollup/plugin-babel';
 const config = require('./build/config');
 
 const outputFile = `${config.output.dir}/${config.output.script}`;
@@ -51,6 +52,11 @@ export default [
 			},
 		},
 		external: ['@iconify/iconify'],
-		plugins: [terser()],
+		plugins: [
+			babel({
+				presets: ['@babel/preset-env'],
+			}),
+			terser(),
+		],
 	},
 ];
