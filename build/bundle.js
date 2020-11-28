@@ -6,12 +6,22 @@ const config = require('./config');
 const rootDir = path.dirname(__dirname);
 const distDir = rootDir + '/' + config.output.dir;
 
+const min = process.env.NODE_ENV !== 'development';
+if (!min) {
+	console.log(
+		'\nWarning: creating development build that contains full files. To create production build run `npm run rel`.\n'
+	);
+}
+
 /**
  * Parse chunk
  */
 function parseChunk(key) {
 	function embedScript(filename) {
-		const content = fs.readFileSync(filename, 'utf8');
+		const content = fs
+			.readFileSync(filename, 'utf8')
+			.replace('//# sourceMappingURL=icon-finder.js.map', '');
+
 		return '<script lang="javascript">\n' + content + '\n</script>';
 	}
 
@@ -23,12 +33,20 @@ function parseChunk(key) {
 	switch (key) {
 		case 'iconify':
 			return embedScript(
-				require.resolve('@iconify/iconify/dist/iconify.min.js')
+				require.resolve(
+					'@iconify/iconify/dist/iconify' +
+						(min ? '.min' : '') +
+						'.js'
+				)
 			);
 
 		case 'icon-finder':
 			return embedScript(
-				distDir + '/' + config.output.script.replace(/.js$/, '.min.js')
+				distDir +
+					'/' +
+					(min
+						? config.output.script.replace(/.js$/, '.min.js')
+						: config.output.script)
 			);
 
 		case 'stylesheet':

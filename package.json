@@ -5,12 +5,13 @@
 	"author": "Vjacheslav Trushkin (Iconify OÜ)",
 	"license": "(Apache-2.0 OR GPL-2.0)",
 	"scripts": {
-		"build": "node build/all",
+		"build": "NODE_ENV=production node build/all",
 		"build:script": "rollup -c rollup.config.js",
 		"watch:script": "rollup -c rollup.config.js --watch",
 		"build:style": "node build/style",
-		"build:plugin": "rm -rf *.sketchplugin && skpm-build",
-		"rel": "rm -rf *.sketchplugin && NODE_ENV=production npm run build"
+		"prebuild:plugin": "node build/plugin-cleanup",
+		"build:plugin": "skpm-build",
+		"dev": "NODE_ENV=development node build/all"
 	},
 	"engines": {
 		"sketch": ">=3.0"
