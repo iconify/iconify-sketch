@@ -1,6 +1,6 @@
 import Iconify from '@iconify/iconify';
 import { Icon, iconToString } from '@iconify/search-core';
-import type { PartialIconCustomisations } from './customisations/types';
+import type { PartialIconCustomisations } from '@iconify/search-core/lib/misc/customisations';
 import { Wrapper } from './wrapper';
 import type { InitialIconFinderState } from './wrapper/state';
 
