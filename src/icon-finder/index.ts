@@ -1,6 +1,7 @@
-import Iconify from '@iconify/iconify';
+import { buildIcon, getIcon } from '@iconify/svelte';
 import { Icon, iconToString } from '@iconify/search-core';
 import type { PartialIconCustomisations } from '@iconify/search-core/lib/misc/customisations';
+import { renderHTML } from '@iconify/search-core/lib/iconify/html';
 import { Wrapper } from './wrapper';
 import type { InitialIconFinderState } from './wrapper/state';
 
@@ -87,7 +88,10 @@ function sendMessage(message: UIMessage) {
 			}
 
 			// Generate SVG
-			let svg = Iconify.renderHTML(name, props);
+			let svg = renderHTML(name, props, (name, customisations) => {
+				const data = getIcon(name);
+				return data ? buildIcon(data, customisations) : null;
+			});
 			if (!svg) {
 				return;
 			}
@@ -99,7 +103,7 @@ function sendMessage(message: UIMessage) {
 			);
 
 			// Add empty rectangle
-			const data = Iconify.getIcon(name)!;
+			const data = getIcon(name)!;
 			svg = svg.replace(
 				'>',
 				'><rect x="' +

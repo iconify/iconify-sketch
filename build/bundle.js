@@ -31,6 +31,7 @@ function parseChunk(key) {
 	}
 
 	switch (key) {
+		/*
 		case 'iconify':
 			return embedScript(
 				require.resolve(
@@ -39,6 +40,7 @@ function parseChunk(key) {
 						'.js'
 				)
 			);
+		*/
 
 		case 'icon-finder':
 			return embedScript(
