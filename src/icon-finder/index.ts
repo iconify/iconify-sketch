@@ -1,7 +1,11 @@
-import { buildIcon, getIcon } from '@iconify/svelte';
+import { getIcon } from '@iconify/svelte';
 import { Icon, iconToString } from '@iconify/search-core';
-import type { PartialIconCustomisations } from '@iconify/search-core/lib/misc/customisations';
-import { renderHTML } from '@iconify/search-core/lib/iconify/html';
+import {
+	mergeCustomisations,
+	emptyCustomisations,
+	PartialIconCustomisations,
+} from '@iconify/search-core/lib/misc/customisations';
+import { renderHTML } from '@iconify/search-core/lib/code-samples/html';
 import { Wrapper } from './wrapper';
 import type { InitialIconFinderState } from './wrapper/state';
 
@@ -78,6 +82,7 @@ function sendMessage(message: UIMessage) {
 			customisations: PartialIconCustomisations
 		): void {
 			const name = typeof icon === 'string' ? icon : iconToString(icon);
+			const data = getIcon(name)!;
 
 			// Copy customisations to avoid modifying object
 			const props = Object.assign({}, customisations);
@@ -88,22 +93,15 @@ function sendMessage(message: UIMessage) {
 			}
 
 			// Generate SVG
-			let svg = renderHTML(name, props, (name, customisations) => {
-				const data = getIcon(name);
-				return data ? buildIcon(data, customisations) : null;
-			});
+			let svg = renderHTML(
+				data,
+				mergeCustomisations(emptyCustomisations, props)
+			);
 			if (!svg) {
 				return;
 			}
 
-			// Set color
-			svg = svg.replace(
-				/currentColor/g,
-				props.color === void 0 ? '#000' : props.color
-			);
-
 			// Add empty rectangle
-			const data = getIcon(name)!;
 			svg = svg.replace(
 				'>',
 				'><rect x="' +
