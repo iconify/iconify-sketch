@@ -2,7 +2,7 @@
 
 Want to add icons to your designs?
 
-Iconify for Sketch got you covered. One plug-in offers over 70,000 icons from 80+ icon sets, including Material Design Icons, FontAwesome, Jam Icons, Open Emoji and many others.
+Iconify for Sketch got you covered. One plug-in offers over 100,000 icons from 100+ icon sets, including Material Design Icons, FontAwesome, Jam Icons, Open Emoji and many others.
 
 You can:
 
@@ -20,7 +20,7 @@ Originally it was designed to replace outdated icon fonts with modern SVG framew
 
 -   Plugins for design tools, such as this plug-in for Sketch.
 -   [SVG framework](https://iconify.design/) to easily embed icons in HTML.
--   [React, Vue and Svelte components](https://docs.iconify.design/implementations/components/) for developers that prefer to use components instead of SVG framework.
+-   [React, Vue, Svelte and Ember icon components](https://docs.iconify.design/icon-components/components/) for developers that prefer to use framework native icon components instead of SVG framework.
 -   [Icon picker](http://github.com/iconify/icon-finder), allowing developers to add icon search functionality to applications, such as website builders.
 
 ## Installation
@@ -70,4 +70,4 @@ This license does not apply to icons. Icons are released under different license
 
 Icons available by default are all licensed under some kind of open source or free license.
 
-© 2019, 2020 Vjacheslav Trushkin
+© 2019 - 2021 Vjacheslav Trushkin
