@@ -45,6 +45,10 @@ export interface UITranslation {
 		more: string;
 		moreAsNumber: boolean;
 	};
+	pagination: {
+		prev: string;
+		next: string;
+	};
 	filters: Record<string, string>;
 	collectionInfo: {
 		total: string;
@@ -93,6 +97,7 @@ export interface UITranslation {
 		copy: string;
 		copied: string;
 		heading: string;
+		headingHidden: string;
 		childTabTitle: string;
 		childTabTitles: Partial<Record<CodeSampleTab, string>>;
 		docsDefault: string;

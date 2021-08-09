@@ -54,6 +54,10 @@ export const phrases: UITranslation = {
 		more: 'Find more icons', // '3 ...',
 		moreAsNumber: false, // True if text above refers to third page, false if text above shows "Find more icons" or similar text
 	},
+	pagination: {
+		prev: 'Previous page',
+		next: 'Next page',
+	},
 	filters: {
 		'uncategorised': 'Uncategorised',
 		'collections': 'Filter search results by icon set:',
@@ -146,7 +150,8 @@ export const phrases: UITranslation = {
 	codeSamples: {
 		copy: 'Copy to clipboard',
 		copied: 'Copied to clipboard.',
-		heading: 'How to use "{name}" icon',
+		headingHidden: 'Show code for "{name}" for developers',
+		heading: 'Code for "{name}" for developers',
 		childTabTitle: '{key} versions:',
 		childTabTitles: {
 			react: 'React component versions:',
@@ -156,20 +161,29 @@ export const phrases: UITranslation = {
 		docs: {
 			iconify:
 				'Click here for more information about Iconify SVG framework.',
+			css: 'Click here for more code examples.',
 		},
 		intro: {
 			'svg-box':
 				'This SVG contains extra empty rectangle that matches viewBox. It is needed to keep icon dimensions when importing icon in software that ignores viewBox attribute.',
 			'svg-uri':
 				'You can use this as background image or as content for pseudo element in stylesheet.',
+			'css':
+				"Add code below to your stylesheet to use icon as background image or as pseudo element's content:",
 		},
 		component: {
-			install: 'Install component and icon set:',
-			install1: 'Install component:',
-			import: 'Import component and icon data:',
-			import1: 'Import component:',
-			vue: 'Add icon data and icon component to your component:',
-			use: 'Use it in your code:',
+			'install-offline': 'Install component and icon set:',
+			'install-simple': 'Install component:',
+			'install-addon': 'Install addon:',
+			'import-offline': 'Import component and icon data:',
+			'import-simple': 'Import component:',
+			'vue-offline':
+				'Add icon data and icon component to your component:',
+			'vue-simple': 'Add icon component to your component:',
+			'use-in-code': 'Use it in your code:',
+			'use-in-html': 'Use it in HTML code:',
+			'use-in-template': 'Use component in template:',
+			'use-generic': '',
 		},
 		iconify: {
 			intro1:
