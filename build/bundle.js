@@ -54,8 +54,8 @@ function parseChunk(key) {
 		case 'stylesheet':
 			return embedStyle(distDir + '/' + config.output.style);
 
-		case 'line-md':
-			return embedStyle(require.resolve('line-md/line-md.css'));
+		// case 'line-md':
+		// 	return embedStyle(require.resolve('line-md/line-md.css'));
 	}
 
 	throw new Error(`Unknown file: ${key}`);

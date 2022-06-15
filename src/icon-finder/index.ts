@@ -8,6 +8,7 @@ import {
 import { renderHTML } from '@iconify/search-core/lib/code-samples/html';
 import { Wrapper } from './wrapper';
 import type { InitialIconFinderState } from './wrapper/state';
+import { cleanupSVG } from './sketch/cleanup-svg';
 
 /**
  * Interfaces
@@ -101,6 +102,9 @@ function sendMessage(message: UIMessage) {
 				return;
 			}
 
+			// Clean up SVG
+			svg = cleanupSVG(svg);
+
 			// Add empty rectangle
 			svg = svg.replace(
 				'>',
@@ -114,6 +118,9 @@ function sendMessage(message: UIMessage) {
 					data.height +
 					'" fill="none" stroke="none" />'
 			);
+
+			// Log it for debug
+			console.log('Importing:', svg)
 
 			// Send message
 			sendMessage({
